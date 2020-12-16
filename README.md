@@ -10,8 +10,12 @@
 * Additional Optional Ideas: I want to turn my Raspberry Pi into a portable face mask detector connected to some arduino modules. The purpose is to add some interactivity and entertainment during my demo. My plan for the break is messing around with manipulating such modules using python so that it can interact with my model. (i.e. If it sees you don't have a mask, a connected speaker module would play a voice recording of myself shouting "put your mask on!" or something funny, but appropriate). I was also going to 3D print a case for it. If that doesn't go well over break, I will just keep it simple and train on my Raspberry Pi and AWS.
 
 
-## Second Proposal: 
+## Second Proposal: QWOP Running Simulator AI
+* This one is a little tough, but would be very interesting to see work using Reinforcement Learning
+* Inspiration: The in-class example of Google AI training to walk
+* The Game: http://www.foddy.net/Athletics.html
+* Want to train a model to press Q, W, O, P as effective as it can to reach the fastest time it can.
 
 
-
-## Third Proposal
+## Third Proposal: Music Genre Classifer
+* Dataset: https://www.kaggle.com/andradaolteanu/gtzan-dataset-music-genre-classification
