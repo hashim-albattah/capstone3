@@ -11,7 +11,7 @@
 
 
 ## Second Proposal: QWOP Running Simulator AI
-* This one is a little tough, but would be very interesting to see work using Reinforcement Learning
+* This one is a little tough, as I would probably have to figure out a way for python to interact with the flash/html5 based game, but would be very interesting to see work using Reinforcement Learning
 * Inspiration: The in-class example of Google AI training to walk
 * The Game: http://www.foddy.net/Athletics.html
 * Want to train a model to press Q, W, O, P as effective as it can to reach the fastest time it can.
