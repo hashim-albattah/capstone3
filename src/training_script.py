@@ -101,7 +101,7 @@ import time
 timestamp = time.strftime('%Y_%m_%d-%H_%M_%S')
 checkpoint_filepath = './mobilenetv2_no_ssd_' + timestamp + '.h5'
 checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_filepath,save_best_only=True)
-early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=10,restore_best_weights=True, monitor = 'val_loss')
+early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=10,restore_best_weights=True, monitor = 'loss')
 
 # setup parameters for model training (i.e learning rate, num of epochs, batch size, and optimizer)
 init_lr = 1e-4
