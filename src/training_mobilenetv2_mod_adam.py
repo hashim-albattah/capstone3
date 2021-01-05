@@ -79,7 +79,7 @@ def setup_to_transfer_learn(model, base_model):
     """Freeze all layers and compile the model"""
     for layer in base_model.layers:
         layer.trainable = False
-    model.compile(optimizer=Adam(lr=1e-4, decay=1e-4 / 1000,
+    model.compile(optimizer=Adam(lr=1e-4, decay=1e-4 / 1000),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
