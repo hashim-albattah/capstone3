@@ -79,7 +79,7 @@ def setup_to_transfer_learn(model, base_model):
     """Freeze all layers and compile the model"""
     for layer in base_model.layers:
         layer.trainable = False
-    model.compile(optimizer='adam',
+    model.compile(optimizer='adam'),
               loss='categorical_crossentropy',
               metrics=['accuracy'])
 
@@ -103,16 +103,10 @@ checkpoint_filepath = './mobilenetv2_no_ssd_' + timestamp + '.h5'
 checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_filepath,save_best_only=True)
 early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=10,restore_best_weights=True)
 
-# setup parameters for model training (i.e learning rate, num of epochs, batch size, and optimizer)
-init_lr = 1e-4
-n_epochs = 1000
-batchsize = 32
-opt = Adam(lr=init_lr, decay=init_lr / n_epochs)
+# train the model
 
 train_model.fit(
     train_generator,
-    epochs= n_epochs,
-    # steps_per_epoch= 2437 // batchsize,
+    epochs= 1000,
     validation_data= validation_generator,
-    # validation_steps= 568 // batchsize,
     callbacks = [checkpoint_cb,early_stopping_cb,tensorboard_cb])
