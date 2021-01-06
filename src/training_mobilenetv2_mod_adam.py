@@ -106,6 +106,6 @@ early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=10,restore_best_we
 # train the model
 train_model.fit(
     train_generator,
-    epochs= n_epochs,
+    epochs= 1000,
     validation_data= validation_generator,
     callbacks = [checkpoint_cb,early_stopping_cb,tensorboard_cb])
