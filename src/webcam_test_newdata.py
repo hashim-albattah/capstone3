@@ -11,7 +11,7 @@ cascPath = os.path.dirname(
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 # load model
-model = load_model("single_mask_detector_model.h5")
+model = load_model("single_mask_detector_model_newdata.h5")
 
 # initiate video stream
 video_capture = cv2.VideoCapture(0)
