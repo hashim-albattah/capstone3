@@ -66,7 +66,7 @@ tensorboard_cb = tf.keras.callbacks.TensorBoard(run_logdir)
 # Set up checkpoints 
 import time
 timestamp = time.strftime('%Y_%m_%d-%H_%M_%S')
-checkpoint_filepath = './mobilenetv2_no_ssd_' + timestamp + '.h5'
+checkpoint_filepath = './mobilenetv2_no_ssd_newdata_' + timestamp + '.h5'
 checkpoint_cb = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_filepath,save_best_only=True)
 # changed patience from 10 to 15
 early_stopping_cb = tf.keras.callbacks.EarlyStopping(patience=15,restore_best_weights=True)
