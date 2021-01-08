@@ -190,7 +190,7 @@ def detect_face(frame, face_net):
 IMAGE_H = 224
 IMAGE_W = 224
 IMAGE_SHAPE = (IMAGE_H, IMAGE_W)
-model_path = "./mask_detector_model_new.tflite"
+model_path = "./mask_detector_model_new_edgetpu.tflite"
 
 cap = FPS_Enhancer(src=0).start()
 net = cv2.dnn.readNetFromCaffe(root_dir+"deploy.prototxt", 
