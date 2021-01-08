@@ -192,7 +192,7 @@ IMAGE_W = 224
 IMAGE_SHAPE = (IMAGE_H, IMAGE_W)
 model_path = "./mask_detector_model_new.tflite"
 
-cap = FPS_Enhancer(src=2).start()
+cap = FPS_Enhancer(src=0).start()
 net = cv2.dnn.readNetFromCaffe(root_dir+"deploy.prototxt", 
                                root_dir+"res10_300x300_ssd_iter_140000.caffemodel")
 time.sleep(2)
