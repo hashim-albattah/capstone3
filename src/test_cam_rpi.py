@@ -36,7 +36,7 @@ class Inference_Engine:
         self.image_size = image_size
         self.model_path = model_path
         self.frame = frame
-        self.interpreter = tflite.Interpreter(model_path=model_path, experimental_delegates=[tflite.experimental.load_delegate('libedgetpu.so.1')])
+        self.interpreter = tflite.Interpreter(model_path=model_path)
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()[0]["index"]
         self.output_details = self.interpreter.get_output_details()[0]["index"]
@@ -77,7 +77,8 @@ class Inference_Engine:
         face = self.preprocess()
         self.interpreter.set_tensor(self.input_details,face)
         self.interpreter.invoke()
-        predictions = self.interpreter.get_tensor(self.output_details)[0]
+        predictions = self.interpreter.get_tensor(self.output_details)
+        predictions = np.squeeze(predictions)
         top_result = 1
         labels = ["Mask","No Mask"]
         result_indices = np.argsort(predictions)[::-1][:top_result]
@@ -190,7 +191,7 @@ def detect_face(frame, face_net):
 IMAGE_H = 224
 IMAGE_W = 224
 IMAGE_SHAPE = (IMAGE_H, IMAGE_W)
-model_path = "./mask_detector_model_new_edgetpu.tflite"
+model_path = "./mask_detector_model_new.tflite"
 
 cap = FPS_Enhancer(src=0).start()
 net = cv2.dnn.readNetFromCaffe(root_dir+"deploy.prototxt", 
