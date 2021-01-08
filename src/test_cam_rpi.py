@@ -91,7 +91,7 @@ class FPS_Enhancer:
     """
     Class to enhance the frame rate of video stream
     """     
-    def __init__(self,src=2):
+    def __init__(self,src=0):
         """Method to read the first frame of the video stream
 
      Attributes:
