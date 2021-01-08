@@ -36,7 +36,7 @@ class Inference_Engine:
         self.image_size = image_size
         self.model_path = model_path
         self.frame = frame
-        self.interpreter = tflite.Interpreter(model_path=model_path)
+        self.interpreter = tflite.Interpreter(model_path=model_path, experimental_delegates=[tflite.load_delegate('libedgetpu.so.1')])
         self.interpreter.allocate_tensors()
         self.input_details = self.interpreter.get_input_details()[0]["index"]
         self.output_details = self.interpreter.get_output_details()[0]["index"]
