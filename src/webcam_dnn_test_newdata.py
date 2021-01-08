@@ -71,7 +71,7 @@ ap.add_argument("-f", "--face", type=str,
 ap.add_argument("-m", "--model", type=str,
 	default="mask_detector_model_new.h5",
 	help="path to trained face mask detector model")
-ap.add_argument("-c", "--confidence", type=float, default=0.5,
+ap.add_argument("-c", "--confidence", type=float, default=0.7,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
