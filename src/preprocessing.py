@@ -23,7 +23,7 @@ import shutil
 from PIL import Image
 
 # Create directories for classes with training, testing, and validation
-root_dir = '../data/dataset'
+root_dir = '../data/dataset/all_images'
 Cls_mask = '/with_mask'
 Cls_nomask = '/without_mask'
 os.makedirs(root_dir +'/train' + Cls_mask)
@@ -35,7 +35,7 @@ os.makedirs(root_dir +'/test' + Cls_nomask)
 
 # shuffle no mask data 
 currentCls = Cls_nomask
-src = "../data/dataset"+currentCls
+src = "../data/dataset/all_images"+currentCls
 allFileNames = os.listdir(src)
 np.random.shuffle(allFileNames)
 train_FileNames, val_FileNames, test_FileNames = np.split(np.array(allFileNames),
@@ -50,7 +50,7 @@ print('Testing: ', len(test_FileNames))
 
 #shuffle mask data
 currentCls = Cls_mask
-src = "../data/dataset"+currentCls
+src = "../data/dataset/all_images"+currentCls
 allFileNames = os.listdir(src)
 np.random.shuffle(allFileNames)
 train_FileNames, val_FileNames, test_FileNames = np.split(np.array(allFileNames),

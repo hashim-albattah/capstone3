@@ -53,7 +53,7 @@ test_generator = test_datagen.flow_from_directory(
 
 
 # load model 
-model = load_model("single_mask_detector_model.h5")
+model = load_model("/model_w_old_data/mask_detector_model.h5")
 
 # Set up Tensorboard for logging models
 root_logdir = os.path.join(os.curdir, "my_logs")
