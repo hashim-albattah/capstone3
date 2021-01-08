@@ -57,7 +57,7 @@ class Inference_Engine:
         face = img_to_array(face)
         face = preprocess_input(face)
         face = np.expand_dims(face,axis=0)
-        face = face.astype(np.float32)
+        face = face.astype(np.uint8)
         return face
     
     def run(self):
