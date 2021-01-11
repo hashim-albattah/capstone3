@@ -1,7 +1,6 @@
 # import the necessary packages
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
-import tensorflow.lite as tflite
 from tensorflow.keras.models import load_model
 from imutils.video import VideoStream
 import numpy as np
@@ -14,9 +13,6 @@ import os
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
 	# from it
-	maskNet.allocate_tensors()
-	output_details = maskNet.get_output_details()[0]["index"]
-	input_details = maskNet.get_input_details()[0]["index"]
 	(h, w) = frame.shape[:2]
 	blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300),
 		(104.0, 177.0, 123.0))
@@ -60,17 +56,8 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 		# for faster inference we'll make batch predictions on *all*
 		# faces at the same time rather than one-by-one predictions
 		# in the above `for` loop
-		faces = np.array(faces, dtype="uint8")
-		for face in faces:
-			height = input_details[0]["shape"][1]
-			width = input_details[0]["shape"][2]
-			region = image.crop(face.bbox).resize((width, height))
-			input_data = np.expand_dims(region, axis=0)
-			maskNet.set_tensor(input_details[0]["index"], input_data)
-			maskNet.invoke()
-			# preds = maskNet.predict(faces, batch_size=32)
-			preds = maskNet.get_tensor(output_details[0]["index"])
-			preds = np.squeeze(preds)
+		faces = np.array(faces, dtype="float32")
+		preds = maskNet.predict(faces, batch_size=32)
 	# return a 2-tuple of the face locations and their corresponding
 	# locations
 	return (locs, preds)
@@ -82,9 +69,9 @@ ap.add_argument("-f", "--face", type=str,
 	default="face_detector",
 	help="path to face detector model directory")
 ap.add_argument("-m", "--model", type=str,
-	default="mask_detector_model_new.tflite",
+	default="mask_detector_model_newer.h5",
 	help="path to trained face mask detector model")
-ap.add_argument("-c", "--confidence", type=float, default=0.7,
+ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	help="minimum probability to filter weak detections")
 args = vars(ap.parse_args())
 
@@ -96,12 +83,8 @@ weightsPath = os.path.sep.join([args["face"],
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
-# print("[INFO] loading face mask detector model...")
-# maskNet = load_model(args["model"])
-maskNet = tflite.Interpreter(model_path=args["model"])
-
-
-
+print("[INFO] loading face mask detector model...")
+maskNet = load_model(args["model"])
 
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
@@ -129,7 +112,7 @@ while True:
 
             # determine the class label and color we'll use to draw
             # the bounding box and text
-            label = "Mask" if mask>withoutMask else "No Mask"
+            label = "Mask" if mask > withoutMask else "No Mask"
             color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
             # include the probability in the label
@@ -150,6 +133,7 @@ while True:
             break
     except:
         pass
+
 # do a bit of cleanup
 cv2.destroyAllWindows()
 vs.stop()
