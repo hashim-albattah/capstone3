@@ -69,7 +69,7 @@ ap.add_argument("-f", "--face", type=str,
 	default="face_detector",
 	help="path to face detector model directory")
 ap.add_argument("-m", "--model", type=str,
-	default="mask_detector_model_newer.h5",
+	default="mask_detector_model_newest.h5",
 	help="path to trained face mask detector model")
 ap.add_argument("-c", "--confidence", type=float, default=0.5,
 	help="minimum probability to filter weak detections")
@@ -112,7 +112,7 @@ while True:
 
             # determine the class label and color we'll use to draw
             # the bounding box and text
-            label = "Mask" if mask > withoutMask else "No Mask"
+            label = "Mask" if mask > 0.9995 else "No Mask"
             color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
 
             # include the probability in the label
