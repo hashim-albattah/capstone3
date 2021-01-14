@@ -1,21 +1,13 @@
-# capstone3
-
-## First Proposal: Face Mask Detecting Algorithm using Raspberyy Pi 4 w/ Coral Edge TPU Accelerator
-* This is a project I really want to do and more than willing to take on the challenge
-* Going to use openCV to obtain picture data of faces with face masks. I've had a few friends take pictures to send me. Those pictures consisting of a properly worn mask, a mask worn improperly in different positions, and no mask at all. Obtaining all this image data shouldn't be a difficult task.
-* Going to use Transfer Learning to use an existing algorithm and optimize it for the face mask detection.
-* Inspiration: https://www.linkedin.com/posts/tniraj_facedetection-maskdetection-machinelearning-activity-6730353131420471296-pTYD
-* Resources: There are many articles on facial recognition, as well as specific ones on face mask detection
-* Additional Optional Goal: If successful, I want to see if I can find a way for the CNN to detect the actual mask, rather than any object covering key areas
-* Additional Optional Ideas: I want to turn my Raspberry Pi into a portable face mask detector connected to some arduino modules. The purpose is to add some interactivity and entertainment during my demo. My plan for the break is messing around with manipulating such modules using python so that it can interact with my model. (i.e. If it sees you don't have a mask, a connected speaker module would play a voice recording of myself shouting "put your mask on!" or something funny, but appropriate). I was also going to 3D print a case for it. If that doesn't go well over break, I will just keep it simple and train on my Raspberry Pi and AWS.
-
-
-## Second Proposal: QWOP Running Simulator AI
-* This one is a little tough, as I would probably have to figure out a way for python to interact with the flash/html5 based game, but would be very interesting to see work using Reinforcement Learning
-* Inspiration: The in-class example of Google AI training to walk
-* The Game: http://www.foddy.net/Athletics.html
-* Want to train a model to press Q, W, O, P as effective as it can to reach the fastest time it can.
-
-
-## Third Proposal: Music Genre Classifer
-* Dataset: https://www.kaggle.com/andradaolteanu/gtzan-dataset-music-genre-classification
+![](images/titlepage.png)
+![](images/intro.png)
+![](images/cvcovid.png)
+![](images/mydetector.png)
+![](images/thedata.png)
+![](images/modeling.png)
+![](images/results.png)
+![](iamges/metrics.png)
+![](images/metrics2.png)
+![](images/realtime.png)
+![](images/drawbacks.png)
+![](images/learned.png)
+![](images/considerations.png)
